@@ -1,0 +1,6 @@
+.DS_Store
+.idea/*
+.idea/vcs.xml
+data/exesound/*
+data/freesound/*
+data/raw/*
