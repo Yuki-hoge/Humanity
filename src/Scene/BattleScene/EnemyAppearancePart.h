@@ -11,12 +11,12 @@
 namespace BattleScene {
     class EnemyEmergingPart : public Part {
     public:
-        void initialize();
-        PartExitStatus play();
+        void initialize() override;
+        PartExitStatus play() override;
 
     private:
-        void update();
-        void show();
+        void update() override;
+        void show() override;
 
     };
 }
