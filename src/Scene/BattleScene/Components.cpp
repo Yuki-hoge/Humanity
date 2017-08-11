@@ -5,5 +5,7 @@
 #include "Components.h"
 
 namespace BattleScene {
-    std::vector<int> g_enemy_list;
+    Humanity *g_humanity = nullptr;
+    std::vector<Character::Enemy::Enemy *> g_enemies;
+    std::vector<Attack *> g_attacks;
 }

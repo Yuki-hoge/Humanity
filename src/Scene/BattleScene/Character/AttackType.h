@@ -7,7 +7,7 @@
 
 namespace BattleScene {
     enum class AttackType : int {
-        USER = 0,
+        HUMANITY = 0,
         ENEMY = 1,
     };
 }

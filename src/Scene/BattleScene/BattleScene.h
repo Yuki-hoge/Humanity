@@ -12,13 +12,13 @@
 namespace BattleScene {
     class BattleScene : public Scene {
     public:
-        void initialize();
-        SceneExitStatus play();
-        void finalize();
+        void initialize() override;
+        SceneExitStatus play() override;
+        void finalize() override;
 
     private:
-        void update();
-        void show();
+        void update() override;
+        void show() override;
         void playBeginningPart();
         void playEnemyEmergingPart();
 

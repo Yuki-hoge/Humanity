@@ -60,4 +60,3 @@ void ::SDL_helper::drawWhiteBack(SDL_Renderer *renderer) {
     SDL_RenderClear(renderer);
 }
 
-

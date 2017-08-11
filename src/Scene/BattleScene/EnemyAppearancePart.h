@@ -2,14 +2,14 @@
 // Created by Y.A. on 2017/08/01.
 //
 
-#ifndef HUMANITY_BATTLESCENE_ENEMYEMERGINGPART_H
-#define HUMANITY_BATTLESCENE_ENEMYEMERGINGPART_H
+#ifndef HUMANITY_BATTLESCENE_ENEMYAPPEARANCEPART_H
+#define HUMANITY_BATTLESCENE_ENEMYAPPEARANCEPART_H
 
 
 #include "../Part.h"
 
 namespace BattleScene {
-    class EnemyEmergingPart : public Part {
+    class EnemyAppearancePart : public Part {
     public:
         void initialize() override;
         PartExitStatus play() override;
@@ -17,9 +17,10 @@ namespace BattleScene {
     private:
         void update() override;
         void show() override;
+        bool is_done_;
 
     };
 }
 
 
-#endif //HUMANITY_BATTLESCENE_ENEMYEMERGINGPART_H
+#endif //HUMANITY_BATTLESCENE_ENEMYAPPEARANCEPART_H

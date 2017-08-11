@@ -23,6 +23,7 @@ namespace GameDefs {
     extern int WINDOW_POSITION_X;
     extern int WINDOW_POSITION_Y;
     extern int FRAME_INTERVAL_US;
+    extern int TOTAL_ENEMY_APPEARANCE_FRAMES;
     extern SDL_Renderer *g_sdl_renderer;
 }
 

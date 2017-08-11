@@ -2,15 +2,15 @@
 // Created by Y.A. on 2017/08/06.
 //
 
-#ifndef HUMANITY_BATTLESCENE_CHARACTER_STATUS_STATUS_H
-#define HUMANITY_BATTLESCENE_CHARACTER_STATUS_STATUS_H
+#ifndef HUMANITY_BATTLESCENE_CHARACTER_STATUS_H
+#define HUMANITY_BATTLESCENE_CHARACTER_STATUS_H
 
-namespace BattleScene::Character::Status {
+namespace BattleScene::Character {
     class Status {
     public:
-        virtual bool canMove();
-        virtual bool canAttack();
-        virtual bool canHit();
+        virtual bool canMove() = 0;
+        virtual bool canAttack() = 0;
+        virtual bool canHit() = 0;
         virtual void update() = 0;
         virtual void draw() = 0;
     };

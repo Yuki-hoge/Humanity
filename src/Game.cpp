@@ -49,8 +49,8 @@ void Game::run() {
 
 void Game::finalize() {
 //    Free game objects
-    title_scene_->finalize();
-    delete current_scene_;
+    title_scene_->finalize(); //delete title_scene_;
+    current_scene_->finalize(); delete current_scene_;
     SDL_DestroyRenderer(g_sdl_renderer);
     SDL_DestroyWindow(sdl_window_);
     sdl_window_ = nullptr; g_sdl_renderer = nullptr;

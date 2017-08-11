@@ -6,9 +6,16 @@
 #define HUMANITY_BATTLESCENE_COMPONENTS_H
 
 #include <vector>
+#include "Character/Enemy/Enemy.h"
+
+//class Enemy;
+class Humanity;
+class Attack;
 
 namespace BattleScene {
-    extern std::vector<int> g_enemy_list;
+    extern Humanity *g_humanity;
+    extern std::vector<Character::Enemy::Enemy *> g_enemies;
+    extern std::vector<Attack *> g_attacks;
 }
 
 #endif //HUMANITY_BATTLESCENE_COMPONENTS_H

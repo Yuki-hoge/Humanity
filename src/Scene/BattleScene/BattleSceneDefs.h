@@ -5,10 +5,13 @@
 #ifndef HUMANITY_BATTLESCENEDEFS_H
 #define HUMANITY_BATTLESCENEDEFS_H
 
+namespace BattleScene {
+    class EnemyPosition {
+    public:
+        int x;
+        int y;
 
-class BattleSceneDefs {
-
-};
-
+    };
+}
 
 #endif //HUMANITY_BATTLESCENEDEFS_H
