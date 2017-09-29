@@ -6,10 +6,12 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
 #include "GameDefs.h"
 #include "Scene/TitleScene/TitleScene.h"
 #include "Scene/BattleScene/BattleScene.h"
 #include "Scene/SceneExitStatus.h"
+#include "tools/SDL_helper.h"
 
 using namespace GameDefs;
 
@@ -28,6 +30,8 @@ void Game::initialize() {
 //    initialize window and renderer
     initializeSDLWindow();
     initializeSDLRenderer();
+
+    initializeTTFFont();
 
 //    initialize title scene
     title_scene_ = TitleScene::getInstancePtr();
@@ -50,13 +54,22 @@ void Game::run() {
 void Game::finalize() {
 //    Free game objects
     title_scene_->finalize(); //delete title_scene_;
-    current_scene_->finalize(); delete current_scene_;
+    if (current_scene_) {
+        current_scene_->finalize();
+        delete current_scene_;
+    }
     SDL_DestroyRenderer(g_sdl_renderer);
     SDL_DestroyWindow(sdl_window_);
     sdl_window_ = nullptr; g_sdl_renderer = nullptr;
 
     // finalizing SDL_mixer
     Mix_CloseAudio();
+
+    if (GameDefs::g_font) {
+        TTF_CloseFont(g_font);
+        GameDefs::g_font = nullptr;
+    }
+    TTF_Quit();
 
 //    Quit program
     SDL_Quit();
@@ -81,4 +94,13 @@ void Game::initializeSDLRenderer() {
         std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
         exit(1);
     }
+}
+
+void Game::initializeTTFFont() {
+    if (TTF_Init() < 0) {
+        std::cout << "TTF_Init Error: " << TTF_GetError() << std::endl;
+        exit(1);
+    }
+
+    GameDefs::g_font = SDL_helper::myOpenFont(GameDefs::FONT_SIZE);
 }

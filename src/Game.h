@@ -33,6 +33,7 @@ private:
 
     void initializeSDLWindow();
     void initializeSDLRenderer();
+    void initializeTTFFont();
 };
 
 

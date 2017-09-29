@@ -12,19 +12,24 @@
 //#define FRAME_INTERVAL_US (1000000 / 60)
 
 
+#include <SDL2/SDL_ttf.h>
+
 #define DRAW_COLOR_WHITE 255, 255, 255, 255
 #define DRAW_COLOR_BLACK 0, 0, 0, 255
 
 class SDL_Renderer;
+//class TTF_Font;
 
 namespace GameDefs {
     extern int WINDOW_WIDTH;
     extern int WINDOW_HEIGHT;
     extern int WINDOW_POSITION_X;
     extern int WINDOW_POSITION_Y;
+    extern int FRAMES_PER_SECOND;
     extern int FRAME_INTERVAL_US;
-    extern int TOTAL_ENEMY_APPEARANCE_FRAMES;
     extern SDL_Renderer *g_sdl_renderer;
+    extern TTF_Font *g_font;
+    extern int FONT_SIZE;
 }
 
 #endif //HUMANITY_GAMEDEFS_H

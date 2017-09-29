@@ -20,6 +20,8 @@ namespace BattleScene::Character::Enemy::TestEnemy::Status {
 
     private:
         SDL_Texture *neutral_img_;
+        int img_width_;
+        int img_height_;
     };
 }
 

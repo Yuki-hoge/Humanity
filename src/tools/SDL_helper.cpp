@@ -4,11 +4,9 @@
 
 #include "SDL_helper.h"
 #include <iostream>
-#include <SDL2/SDL.h>
+//#include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <SDL2/SDL_mixer.h>
 #include "../GameDefs.h"
-//#include <SDL2/SDL_mixer.h>
 
 SDL_Surface* ::SDL_helper::myIMGLoad(std::string img_path) {
     SDL_Surface *img = IMG_Load(img_path.c_str());
@@ -45,7 +43,7 @@ Mix_Music* ::SDL_helper::myLoadMUS(std::string music_path) {
 
 Mix_Chunk* ::SDL_helper::myLoadWAV(std::string music_path) {
     Mix_Chunk *chunk = Mix_LoadWAV(music_path.c_str());
-    if(!chunk) {
+    if (!chunk) {
         std::cout << "Mix_LoadWAV Error: " << Mix_GetError() << std::endl;
         exit(1);
     }
@@ -58,5 +56,26 @@ void ::SDL_helper::drawWhiteBack(SDL_Renderer *renderer) {
     SDL_SetRenderDrawColor(renderer, DRAW_COLOR_WHITE);
     // Fill sdl_renderer with color
     SDL_RenderClear(renderer);
+}
+
+TTF_Font* ::SDL_helper::myOpenFont(int ptsize) {
+    TTF_Font *font = TTF_OpenFont("data/font.ttf", ptsize);
+    if (!font) {
+        std::cout << "TTF_OpenFont Error: " << TTF_GetError() << std::endl;
+        exit(1);
+    }
+    return font;
+}
+
+
+SDL_Texture* ::SDL_helper::myCreateBlackStrTexture(TTF_Font *font, std::string string) {
+    static SDL_Color color_fg = {DRAW_COLOR_BLACK};
+    static SDL_Color color_bg = {DRAW_COLOR_WHITE};
+
+    auto surface = TTF_RenderUTF8_Shaded(font, string.c_str(), color_fg, color_bg);
+    auto texture = SDL_CreateTextureFromSurface(GameDefs::g_sdl_renderer, surface);
+    SDL_FreeSurface(surface);
+
+    return texture;
 }
 

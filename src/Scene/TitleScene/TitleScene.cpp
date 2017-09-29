@@ -55,7 +55,10 @@ void TitleScene::finalize() {
 
     SDL_DestroyTexture(title_logo_); title_logo_ = nullptr;
     Mix_FreeMusic(title_bgm_); title_bgm_ = nullptr;
-    Mix_FreeChunk(chunk_se_); chunk_se_ = nullptr;
+    if (!chunk_se_) {
+        Mix_FreeChunk(chunk_se_);
+        chunk_se_ = nullptr;
+    }
 }
 
 TitleScene::UserInputKey TitleScene::checkUserInputKey() {

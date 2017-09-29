@@ -11,11 +11,13 @@
 //class Enemy;
 class Humanity;
 class Attack;
+class SDL_Texture;
 
 namespace BattleScene {
     extern Humanity *g_humanity;
     extern std::vector<Character::Enemy::Enemy *> g_enemies;
     extern std::vector<Attack *> g_attacks;
+    extern SDL_Texture *g_background_texture;
 }
 
 #endif //HUMANITY_BATTLESCENE_COMPONENTS_H

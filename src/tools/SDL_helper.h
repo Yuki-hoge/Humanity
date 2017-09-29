@@ -8,6 +8,7 @@
 
 #include <string>
 #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_ttf.h>
 
 class SDL_Renderer;
 class SDL_Surface;
@@ -21,6 +22,9 @@ namespace SDL_helper {
     Mix_Music* myLoadMUS(std::string music_path);
     Mix_Chunk* myLoadWAV(std::string music_path);
     void drawWhiteBack(SDL_Renderer *renderer);
+    TTF_Font* myOpenFont(int ptsize);
+    SDL_Texture* myCreateBlackStrTexture(TTF_Font *font, std::string string);
+
 };
 
 

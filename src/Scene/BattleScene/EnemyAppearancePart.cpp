@@ -10,6 +10,7 @@
 #include "../../GameDefs.h"
 #include "Components.h"
 #include "../../tools/Timer.h"
+#include "BattleScene.h"
 
 namespace BattleScene {
     void EnemyAppearancePart::initialize() {
@@ -27,7 +28,7 @@ namespace BattleScene {
 
             update();
             if (is_done_) {
-                SDL_Delay(1500);
+                SDL_Delay(10500);
                 return PartExitStatus::QUIT;
             }
             sleepAtMost2F(timer);
@@ -40,7 +41,6 @@ namespace BattleScene {
 
         bool are_all_appeared = true;
         for (const auto& enemy : g_enemies) {
-            are_all_appeared = true;
             if (!enemy->isAppeared()) {
                 enemy->update();
                 are_all_appeared = false;
@@ -53,6 +53,7 @@ namespace BattleScene {
 
     void EnemyAppearancePart::show() {
         SDL_helper::drawWhiteBack(GameDefs::g_sdl_renderer);
+        BattleScene::drawBackGround();
         for (const auto& enemy : g_enemies) {
             enemy->draw();
         }
