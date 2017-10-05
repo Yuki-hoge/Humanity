@@ -16,7 +16,7 @@ namespace BattleScene {
     void EnemyAppearancePart::initialize() {
         auto *te = new Character::Enemy::TestEnemy::TestEnemy();
         te->initialize();
-        g_enemies.push_back(te);
+        g_enemy_map[1][1] = te;
         is_done_ = false;
     }
 
@@ -40,11 +40,13 @@ namespace BattleScene {
         if (is_done_) return;
 
         bool are_all_appeared = true;
-        for (const auto& enemy : g_enemies) {
-            if (!enemy->isAppeared()) {
-                enemy->update();
-                are_all_appeared = false;
-                break;
+        for (const auto& row : g_enemy_map) {
+            for (const auto &enemy : row) {
+                if (enemy && !enemy->isAppeared()) {
+                    enemy->update();
+                    are_all_appeared = false;
+                    break;
+                }
             }
         }
 
@@ -54,8 +56,12 @@ namespace BattleScene {
     void EnemyAppearancePart::show() {
         SDL_helper::drawWhiteBack(GameDefs::g_sdl_renderer);
         BattleScene::drawBackGround();
-        for (const auto& enemy : g_enemies) {
-            enemy->draw();
+        for (const auto& row : g_enemy_map) {
+            for (const auto &enemy : row) {
+                if (enemy) {
+                    enemy->draw();
+                }
+            }
         }
         SDL_RenderPresent(GameDefs::g_sdl_renderer);
     }
