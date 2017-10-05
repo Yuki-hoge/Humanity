@@ -15,17 +15,27 @@
 
 namespace GD = GameDefs;
 namespace BSD = BattleScene::Defs;
+using vvCCE = std::vector<std::vector<BattleScene::Character::Enemy::Enemy *>>;
 
 namespace BattleScene {
     void BattleScene::initialize() {
         scene_type_ = SceneType::BATTLE;
         battle_bgm_ = SDL_helper::myLoadMUS("data/sound/battle_scene/battle_bgm.wav");
-        std::string background_img_path = "data/battle_scene/background.png";
-        g_background_texture
-                = SDL_helper::myCreateTextureFromIMG(
-                GD::g_sdl_renderer, background_img_path);
+
+        g_background_texture = SDL_helper::myCreateTextureFromIMG(
+                GD::g_sdl_renderer,
+                "data/battle_scene/background.png");
         g_enemy_appearing_se = SDL_helper::myLoadWAV(
                 "data/sound/battle_scene/enemy_appearing_se.wav");
+
+        // Initialize Enemy Map
+//        vvCCE tmp(3, std::vector<Character::Enemy::Enemy *>(3));
+//        g_enemy_map.clear(); g_enemy_map = std::move(tmp);
+        for (auto& row : g_enemy_map) {
+            for (auto elem : row) {
+                elem = nullptr;
+            }
+        }
     }
 
     SceneExitStatus BattleScene::play() {
@@ -37,12 +47,16 @@ namespace BattleScene {
     }
 
     void BattleScene::finalize() {
-        if (!g_enemies.empty()) {
-            for (const auto& enemy : g_enemies) {
-                enemy->finalize();
-                delete enemy;
+        if (!g_enemy_map.empty()) {
+            for (auto& row : g_enemy_map) {
+                for (auto enemy : row) {
+                    if (enemy) {
+                        enemy->finalize();
+                        delete enemy;
+                        enemy = nullptr;
+                    }
+                }
             }
-            g_enemies.clear();
         }
 
         if (g_background_texture) {
