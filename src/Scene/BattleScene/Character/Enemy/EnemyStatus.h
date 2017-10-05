@@ -5,7 +5,9 @@
 #ifndef HUMANITY_BATTLESCENE_CHARACTER_ENEMY_ENEMYSTATUS_H
 #define HUMANITY_BATTLESCENE_CHARACTER_ENEMY_ENEMYSTATUS_H
 
-//#include "../Status.h"
+#include <string>
+
+class SDL_Texture;
 
 namespace BattleScene::Character::Enemy {
     class EnemyStatus {
@@ -13,11 +15,15 @@ namespace BattleScene::Character::Enemy {
         virtual void initialize() = 0;
         virtual void update() = 0;
         virtual void draw() = 0;
-        virtual void finalize() = 0;
-        virtual bool isDone() = 0;
+        virtual void finalize();
+        virtual bool isDone();
 
     protected:
         bool is_done_;
+        SDL_Texture* status_img_;
+        int img_width_;
+        int img_height_;
+        virtual void do_common_init(std::string status_img_path);
     };
 }
 

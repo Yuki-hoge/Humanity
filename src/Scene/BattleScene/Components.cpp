@@ -9,4 +9,5 @@ namespace BattleScene {
     std::vector<Character::Enemy::Enemy *> g_enemies;
     std::vector<Attack *> g_attacks;
     SDL_Texture *g_background_texture = nullptr;
+    Mix_Chunk *g_enemy_appearing_se = nullptr;
 }

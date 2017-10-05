@@ -24,6 +24,8 @@ namespace BattleScene {
         g_background_texture
                 = SDL_helper::myCreateTextureFromIMG(
                 GD::g_sdl_renderer, background_img_path);
+        g_enemy_appearing_se = SDL_helper::myLoadWAV(
+                "data/sound/battle_scene/enemy_appearing_se.wav");
     }
 
     SceneExitStatus BattleScene::play() {
@@ -46,6 +48,11 @@ namespace BattleScene {
         if (g_background_texture) {
             SDL_DestroyTexture(g_background_texture);
             g_background_texture = nullptr;
+        }
+
+        if (g_enemy_appearing_se) {
+            Mix_FreeChunk(g_enemy_appearing_se);
+            g_enemy_appearing_se = nullptr;
         }
     }
 
