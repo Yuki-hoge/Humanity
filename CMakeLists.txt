@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.5)
 project(Humanity)
 
 #-lSDL2 -lSDL2_image -lSDL2_mixer
