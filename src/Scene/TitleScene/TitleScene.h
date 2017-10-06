@@ -45,7 +45,6 @@ public:
 private:
     TitleScene() = default;
     ~TitleScene() = default;
-    void update();
     void show();
     void drawBackground();
     void drawMessage();

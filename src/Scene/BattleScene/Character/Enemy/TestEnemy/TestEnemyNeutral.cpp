@@ -32,7 +32,7 @@ void BattleScene::Character::Enemy::TestEnemy::TestEnemyNeutral::draw() {
                     GD::WINDOW_HEIGHT-121-draw_rect_height,
                     draw_rect_width,
                     draw_rect_height};
-    draw_rect->x -= 50;
-    draw_rect->y -= 50;
+//    draw_rect->x -= 50;
+//    draw_rect->y -= 50;
     SDL_RenderCopy(GD::g_sdl_renderer, status_img_, nullptr, draw_rect);
 }

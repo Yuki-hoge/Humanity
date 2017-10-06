@@ -10,11 +10,7 @@
 namespace BattleScene {
     class BeginningPart : public Part {
     public:
-        PartExitStatus play();
-
-    private:
-        void update();
-        void show();
+        PartExitStatus play() override;
     };
 }
 

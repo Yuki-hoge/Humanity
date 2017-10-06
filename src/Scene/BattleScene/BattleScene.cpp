@@ -19,7 +19,6 @@ using vvCCE = std::vector<std::vector<BattleScene::Character::Enemy::Enemy *>>;
 
 namespace BattleScene {
     void BattleScene::initialize() {
-        scene_type_ = SceneType::BATTLE;
         battle_bgm_ = SDL_helper::myLoadMUS("data/sound/battle_scene/battle_bgm.wav");
 
         g_background_texture = SDL_helper::myCreateTextureFromIMG(
@@ -68,14 +67,6 @@ namespace BattleScene {
             Mix_FreeChunk(g_enemy_appearing_se);
             g_enemy_appearing_se = nullptr;
         }
-    }
-
-    void BattleScene::update() {
-
-    }
-
-    void BattleScene::show() {
-
     }
 
     void BattleScene::playBeginningPart() {

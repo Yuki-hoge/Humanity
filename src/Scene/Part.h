@@ -6,10 +6,13 @@
 #define HUMANITY_PART_H
 
 //#include "PartExitStatus.h"
+#include "../GameDefs.h"
+#include "../tools/Timer.h"
 
 class Timer;
 class SDL_Renderer;
 enum class PartExitStatus : int;
+namespace GD = GameDefs;
 
 class Part {
 public:
@@ -18,9 +21,16 @@ public:
     virtual void finalize(){};
 
 protected:
-    virtual void update() = 0;
-    virtual void show() = 0;
-    void sleepAtMost2F(const Timer &timer);
+    virtual void update(){};
+    virtual void show(){};
+    inline void sleepAtMost2F(const Timer &timer) {
+        auto elapsed_usec = timer.getElapsedNanosec();
+        if (elapsed_usec < GD::FRAME_INTERVAL_US) {
+            timer.sleepNanosec(GD::FRAME_INTERVAL_US - elapsed_usec);
+        } else {
+            timer.sleepNanosec(2 * GD::FRAME_INTERVAL_US - elapsed_usec);
+        }
+    };
 
 };
 

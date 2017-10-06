@@ -22,12 +22,4 @@ namespace BattleScene {
         Mix_FreeChunk(se);
         return PartExitStatus::CONTINUE;
     }
-
-    void BeginningPart::update() {
-
-    }
-
-    void BeginningPart::show() {
-
-    }
 }
