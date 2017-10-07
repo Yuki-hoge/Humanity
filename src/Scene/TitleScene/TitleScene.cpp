@@ -129,11 +129,12 @@ TitleScene::PartExitStatus TitleScene::playInputWaitingPart() {
         // update title element
         title_message_->update();
 
-        auto elapsed_usec = timer.getElapsedNanosec();
-        if (elapsed_usec < FRAME_INTERVAL_US) {
-            timer.sleepNanosec(FRAME_INTERVAL_US - elapsed_usec);
+        long elapsed_nsec = timer.getElapsedNanosec();
+//        std::cout << elapsed_nsec << "," << FRAME_INTERVAL_NS << std::endl;
+        if (elapsed_nsec < FRAME_INTERVAL_NS) {
+            timer.sleepNanosec(FRAME_INTERVAL_NS - elapsed_nsec);
         } else {
-            timer.sleepNanosec(2*FRAME_INTERVAL_US - elapsed_usec);
+            timer.sleepNanosec(2*FRAME_INTERVAL_NS - elapsed_nsec);
         }
         show();
     }
