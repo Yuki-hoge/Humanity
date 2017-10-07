@@ -9,7 +9,7 @@
 //#define WINDOW_HEIGHT 480
 //#define WINDOW_POSITION_X 100
 //#define WINDOW_POSITION_Y 100
-//#define FRAME_INTERVAL_US (1000000 / 60)
+//#define FRAME_INTERVAL_NS (1000000 / 60)
 
 
 #include <SDL2/SDL_ttf.h>
@@ -26,7 +26,7 @@ namespace GameDefs {
     extern int WINDOW_POSITION_X;
     extern int WINDOW_POSITION_Y;
     extern int FRAMES_PER_SECOND;
-    extern int FRAME_INTERVAL_US;
+    extern long FRAME_INTERVAL_NS;
     extern SDL_Renderer *g_sdl_renderer;
     extern TTF_Font *g_font;
     extern int FONT_SIZE;

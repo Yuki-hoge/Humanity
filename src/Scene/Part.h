@@ -24,11 +24,11 @@ protected:
     virtual void update(){};
     virtual void show(){};
     inline void sleepAtMost2F(const Timer &timer) {
-        auto elapsed_usec = timer.getElapsedNanosec();
-        if (elapsed_usec < GD::FRAME_INTERVAL_US) {
-            timer.sleepNanosec(GD::FRAME_INTERVAL_US - elapsed_usec);
+        long elapsed_nsec = timer.getElapsedNanosec();
+        if (elapsed_nsec < GD::FRAME_INTERVAL_NS) {
+            timer.sleepNanosec(GD::FRAME_INTERVAL_NS - elapsed_nsec);
         } else {
-            timer.sleepNanosec(2 * GD::FRAME_INTERVAL_US - elapsed_usec);
+            timer.sleepNanosec(2 * GD::FRAME_INTERVAL_NS - elapsed_nsec);
         }
     };
 

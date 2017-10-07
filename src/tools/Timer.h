@@ -11,7 +11,7 @@ class Timer {
 public:
     Timer();
     void restart();
-    long long getElapsedNanosec() const;
+    long getElapsedNanosec() const;
     void sleepNanosec(long ns) const;
 
 private:
