@@ -20,8 +20,6 @@ namespace BattleScene {
         static void drawBackGround();
 
     private:
-        void update() override;
-        void show() override;
         void playBeginningPart();
         void playEnemyEmergingPart();
 

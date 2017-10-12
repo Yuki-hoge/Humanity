@@ -20,7 +20,6 @@ using namespace GameDefs;
 TitleScene* TitleScene::instance_ptr = nullptr;
 
 void TitleScene::initialize() {
-    scene_type_ = SceneType::TITLE;
     title_message_ = new TitleMessage();
     title_message_->initialize();
 
@@ -82,10 +81,6 @@ TitleScene::UserInputKey TitleScene::checkUserInputKey() {
     return UserInputKey::NONE;
 }
 
-void TitleScene::update() {
-    title_message_->update();
-}
-
 void TitleScene::show() {
     drawBackground();
     drawMessage();
@@ -132,13 +127,14 @@ TitleScene::PartExitStatus TitleScene::playInputWaitingPart() {
         }
 
         // update title element
-        update();
+        title_message_->update();
 
-        auto elapsed_usec = timer.getElapsedNanosec();
-        if (elapsed_usec < FRAME_INTERVAL_US) {
-            timer.sleepNanosec(FRAME_INTERVAL_US - elapsed_usec);
+        long elapsed_nsec = timer.getElapsedNanosec();
+//        std::cout << elapsed_nsec << "," << FRAME_INTERVAL_NS << std::endl;
+        if (elapsed_nsec < FRAME_INTERVAL_NS) {
+            timer.sleepNanosec(FRAME_INTERVAL_NS - elapsed_nsec);
         } else {
-            timer.sleepNanosec(2*FRAME_INTERVAL_US - elapsed_usec);
+            timer.sleepNanosec(2*FRAME_INTERVAL_NS - elapsed_nsec);
         }
         show();
     }

@@ -10,11 +10,11 @@ Timer::Timer() {
     start_ = high_resolution_clock::now();
 }
 
-long long Timer::getElapsedNanosec() const {
+long Timer::getElapsedNanosec() const {
     auto end = high_resolution_clock::now();
     auto dur = end - start_;
     auto elapsed_nanosec = duration_cast<nanoseconds>(dur).count();
-    return elapsed_nanosec;
+    return static_cast<long>(elapsed_nanosec);
 }
 
 void Timer::restart() {

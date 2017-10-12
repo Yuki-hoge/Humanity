@@ -16,7 +16,7 @@ class Mix_Chunk;
 
 namespace BattleScene {
     extern Humanity *g_humanity;
-    extern std::vector<Character::Enemy::Enemy *> g_enemies;
+    extern std::vector<std::vector<Character::Enemy::Enemy *>> g_enemy_map;
     extern std::vector<Attack *> g_attacks;
     extern SDL_Texture *g_background_texture;
     extern Mix_Chunk *g_enemy_appearing_se;

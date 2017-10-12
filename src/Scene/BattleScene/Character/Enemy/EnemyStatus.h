@@ -21,8 +21,12 @@ namespace BattleScene::Character::Enemy {
     protected:
         bool is_done_;
         SDL_Texture* status_img_;
+
+        // size of character image
+        // different from the size of combined image data
         int img_width_;
         int img_height_;
+
         virtual void do_common_init(std::string status_img_path);
     };
 }

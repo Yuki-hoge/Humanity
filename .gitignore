@@ -5,7 +5,6 @@ data/exesound/*
 data/freesound/*
 data/raw/*
 cmake-build-debug/*
-data/battle_scene/*
 Doxyfile
 html/*
 latex/*
